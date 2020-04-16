@@ -1,16 +1,26 @@
 const os = require('os');
+const log = require('./logger')
+
 const { freemem, totalmem } = os
 
 const convertoToMb = value => parseInt(value /1024/1024)
 
-const total = convertoToMb(totalmem())
-const mem = convertoToMb(freemem())
 
-const percents = parseInt((mem / total) * 100)
+setInterval(() => {
+  const total = convertoToMb(totalmem())
+  const mem = convertoToMb(freemem())
+  const percents = parseInt((mem / total) * 100)
 
-const stats = {
-  free: `${mem} MB` ,
-  total: `${total} MB` ,
-  usage: `${percents}%` ,
-}
-console.table(stats)
+    const stats = {
+    free: `${mem} MB` ,
+    total: `${total} MB` ,
+    usage: `${percents}%` ,
+  }
+
+  console.clear()
+  console.table(stats)
+  log('...processando')
+}, 1000);
+
+
+
