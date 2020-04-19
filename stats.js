@@ -19,7 +19,7 @@ setInterval(() => {
 
   console.clear()
   console.table(stats)
-  log('...processando')
+  log(`${JSON.stringify(stats)}\n`)
 }, 1000);
 
 
